@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+<section class="contact-innpage py-5">
+		<div class="container py-md-8 mt-md-3">
+				<div class="photree_head_section">
+				<h2 class="phot3l_header">Take your Hea<i class="fa fa-heart" aria-hidden="true"></i>t out --> <span>Shayari</span></h2>
+			</div>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      
+     {{ form.title|as_crispy_field }}
+    </div>
+  
+  </div>
+  
+	<div class="form-group"  >
+  
+	<style="height:300px">
+	{{ form.body|as_crispy_field }}</style>
+			
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-7">
+    {{ form.image|as_crispy_field }}  
+    
+    </div>
+  
+  </div>
+  
+ 
+  <input type="submit" value="Create Post" class="btn btn-outline-success"> 
+</form>
+	</div>
+	</section>
+
+{% endblock %}

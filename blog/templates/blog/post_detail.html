@@ -1,0 +1,54 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<!-- //banner -->
+		<section class="banner_bottom py-5">
+		<div class="container py-md-4 mt-md-3"> 
+			<div class="photree_head_section">
+				<h2 class="phot3l_header">Shayari <span></span></h2>
+			</div>
+			<div class="inner_sec_info_photree_photile mt-md-5 pt-4">
+				<div class="row help_full">
+					<div class="col-lg-6 banner_bottom_grid help">
+						<img src="{{ post.image.url }}" alt=" " class="img-fluid">
+					</div>
+					<div class="col-lg-6 banner_bottom_left">
+						<h4>{{ post.title }}</h4>
+						<p>{{ post.body }}</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--//ab-->
+<!-- stats -->
+	<div class="stats">
+	<div class="overlay py-5">
+		<div class="container py-md-4 mt-md-3">
+			<div class="photree_head_section">
+				<h3 class="phot3l_header text-white">Our <span class="text-white">Credits</span></h3>
+			</div>
+			<div class="row inner_phot3l_photile_grids-1 mt-md-5 pt-4">
+			<div class="col-md-4 phot3layouts_stats_left phot3_counter_grid">
+				<i class="fas fa-image" aria-hidden="true"></i>
+				<p>2017</p>
+				<h3>Best Shayris of the year</h3>
+			</div>
+			<div class="col-md-4 phot3layouts_stats_left phot3_counter_grid1">
+				<i class="fas fa-smile" aria-hidden="true"></i>
+				<p>2018</p>
+				<h3>Dil ki Awaaz</h3>
+			</div>
+			<div class="col-md-4 phot3layouts_stats_left phot3_counter_grid3">
+				<i class="fas fa-camera" aria-hidden="true"></i>
+				<p>2019</p>
+				<h3>Love in Air</h3>
+			</div>
+	</div>
+   </div>
+   </div>   
+</div>
+<!-- //stats -->
+
+	
+{% endblock %}

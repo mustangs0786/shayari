@@ -8,18 +8,21 @@
 				<div class="photree_head_section">
 				<h2 class="phot3l_header">Get in <span>Touch</span></h2>
 			</div>
-			<form action="#" method="post">
+			<form name="myForm" action="{% url 'contact' %}" onsubmit="return validateForm()" method="post">
+			{% csrf_token %}
 			<div class="row mail_grid_phot3l mt-md-5 pt-4">
 				
 					<div class="col-md-6 contact_left_grid">
 						<div class="contact-fields-phot3ls">
-							<input type="text" name="Name" placeholder="Name" required="">
+							<input type="text" name="fname" pattern="[A-Za-z]{1,32}" placeholder="Name"  required="">
+
 						</div>
 						<div class="contact-fields-phot3ls">
-							<input type="email" name="Email" placeholder="Email" required="">
+							<input type="email" name="Email" placeholder="username@gmail.com" pattern=".+@gmail.com" required="">
 						</div>
 						<div class="contact-fields-phot3ls">
-							<input type="text" name="Telephone" placeholder="Telephone" required="">
+							<input type="text" pattern="[789][0-9]{9}" maxlength="10" name="Telephone" placeholder="Telephone(Start with 7,8,9  only)" required=""> 
+
 						</div>
 						<div class="contact-fields-phot3ls">
 							<input type="text" name="Subject" placeholder="Subject" required="">
@@ -36,8 +39,10 @@
 			</form>
 		</div>
 	</section>
+	
 	<!-- //contact -->
 	<section class="map-section">
 		<iframe src="https://maps.google.com/maps?q=zirakpur&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
 	</section>
+	
 {% endblock %}

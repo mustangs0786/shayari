@@ -1,0 +1,104 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+        	<!-- contact -->
+	<section class="contact-innpage py-5">
+		<div class="container py-md-2 mt-md-2">
+				<div class="photree_head_section">
+				<h2 class="phot3l_header">Register<span></span></h2>
+			</div>
+			<form method="post" onsubmit="return checkForm(this);">
+			{% csrf_token %}
+  <div class="container" >
+  	<div class="imgcontainer">
+    <img src="/media/index.png" alt="Avatar" class="avatar">
+  </div>
+    
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+	<label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+	<label for="name"><b>Name</b></label>
+    <input type="text" pattern="[A-Za-z]{1,32}" placeholder="Enter Name" name="first_name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email format:username@gmail.com"  pattern=".+@gmail.com" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password1" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password2" required>
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="{% url 'user_login' %}">Sign in</a>.</p>
+  </div>
+</form>
+		</div>
+	</section>
+	
+	
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    re = /^\w+$/;
+    if(!re.test(form.username.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    }
+
+    if(form.password1.value != "" && form.password1.value == form.password2.value) {
+      if(form.password1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.password1.focus();
+        return false;
+      }
+      if(form.password1.value == form.username.value) {
+        alert("Error: Password must be different from Username!");
+        form.password1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.password1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.password1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.password1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.password1.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.password1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.password1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.password1.focus();
+      return false;
+    }
+
+   
+    return true;
+  }
+
+</script>
+
+
+	
+	
+{% endblock %}

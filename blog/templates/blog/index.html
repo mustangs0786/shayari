@@ -9,6 +9,11 @@
 	<meta name="keywords" content="Photog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
 	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -32,7 +37,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <!--//stylesheets-->
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
+	  <style>
+	  .imgcontainer {
+		text-align: center;
+		margin: 24px 0 12px 0;
+		}
+
+		img.avatar {
+			width: 100%;
+			border-radius: 10%;
+			}
 	  
+	  
+	  </style>
    </head>
    <body>
 
@@ -57,22 +74,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
 							 </li>
 							 <li class="nav-item">
-								<a href="about.html" class="nav-link">About</a>
+								<a href="#" class="nav-link">About</a>
+							 </li>
+							 {% if user.is_authenticated %}
+							 <li class="nav-item">
+								<a href="{% url 'user_logout' %}" class="nav-link ">Logout</a>
+							 </li>
+							 {% else %}
+							  <li class="nav-item">
+								<a href="{% url 'user_login' %}" class="nav-link ">Login</a>
 							 </li>
 							 <li class="nav-item">
-								<a href="gallery.html" class="nav-link ">Gallery</a>
+								<a href="{% url 'register' %}" class="nav-link ">Register</a>
 							 </li>
-							  <li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										Pages
-									</a>
-									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="codes.html">Codes</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="about.html">About</a>
-									</div>
-								</li>
+							 {% endif %}
+							  
 							 <li class="nav-item">
 								<a href="/contact/" class="nav-link">Contact</a>
 							 </li>
@@ -152,11 +168,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 phot3layouts_news_left_grid1">
 				<div class="new_top">
 					
-					<img src="{{ p.image.url }}" class="card-img-top " alt="image not found"> 
+					<!--<img src="{{ p.image.url }}" class="img-circle" alt="Responsive Image" width="300" height="270"> -->
+						<div class="imgcontainer">
+							<img src="{{ p.image.url }}" alt="Avatar" class="avatar">
+						</div>
 					
 					
-					
-					<h6 class="mb-3">{{ p.created }} </h6>				
+					<h6 class="mb-3">{{ p.created }} </h6>	
+					<h6 class="mb-3">by {{ p.author }} </h6>			
 					<h3 class="mb-3">{{ p.title }}</h3>
 				
 					<a href="{% url 'post_detail' p.id p.slug %}" class="btn btn-success" style="float:right;">Go somewhere</a>
@@ -170,8 +189,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 		
    </div> 
+   
 		
 </section>
+
 	
 <!-- //news -->
 

@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+     	<!-- contact -->
+	<section class="contact-innpage py-9">
+		<div class="container py-md-2 mt-md-2">
+				<div class="photree_head_section">
+				<h2 class="phot3l_header">Login <span></span></h2>
+			</div>
+			<form method="post">
+			{% csrf_token %}
+		<div class="imgcontainer">
+    <img src="/media/index.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+    
+  </div>
+  <div class="container signin">
+    <p>Not having an account? <a href="{% url 'register' %}">Register</a>.</p>
+  </div>
+  
+</form>
+		</div>
+	</section>
+	<!-- //contact -->
+	
+
+	
+{% endblock %}

@@ -1314,6 +1314,7 @@ p.paragraph-phot3-photile a:hover {
 /*--contact Inner--*/
 
 .mail_grid_phot3l input[type="text"],
+.mail_grid_phot3l input[type="password"],
 .mail_grid_phot3l input[type="email"],
 .mail_grid_phot3l textarea {
 	outline: none;

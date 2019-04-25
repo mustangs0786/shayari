@@ -9,11 +9,12 @@
 			<div class="inner_sec_info_photree_photile mt-md-5 pt-4">
 				<div class="row help_full">
 					<div class="col-lg-6 banner_bottom_grid help">
-						<img src="{{ post.image.url }}" alt=" " class="img-fluid">
+					
+						<img src="{{ post.image.url }}" alt=" " class="img-fluid" width="400" height="370" >
 					</div>
 					<div class="col-lg-6 banner_bottom_left">
 						<h4>{{ post.title }}</h4>
-						<p>{{ post.body }}</p>
+						<p class="font-weight-bolder">{{ post.body }}</p>
 						
 					</div>
 				</div>
@@ -21,6 +22,62 @@
 		</div>
 	</section>
 	<!--//ab-->
+	
+	<div class="w-75 p-3">
+                     <div class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">
+                        <h3>Our Recent Comments</h3>
+                     </div>
+					
+                     <div class="comment-list">
+						{% for a in comments %}
+                        <div class="row">
+                           <div class="col-lg-3 col-md-4 col-sm-4 comment-imgs text-center">
+						   <style>
+							.blur {
+							border-radius: 50%;
+							}
+							</style>	
+                              <img src="/media/index.png"  class="blur"  alt="Responsive Image" width="50" height="50">
+                           </div>
+                           <div class="col-lg-9 col-md-8 col-sm-8 comments-grid-right text-left">
+                              <h4>{{ a.content }}</h4>
+                              <p class="my-2">by {{   a.user|capfirst }}_{{ a.timestamp }}
+                              </p>
+                              <ul>
+                                 <span><li> <i></i></li></span>
+                                <!-- <li><a href="singlepage.html" class="clr-two">Reply</a></li>-->
+                              </ul>
+                           </div>
+						   
+                        </div>
+						{% endfor %}
+                     </div>
+					 <br>
+					
+                     <!--//comments-->
+                     <!--comments-form-->
+					 <div class="w-75 p-3 shadow-sm p-3 mb-5 bg-white rounded" >
+                    
+                        <div class="my-3 leave-comment text-left">
+                           <h4>Comments Here</h4>
+                        </div>
+                        <form class="pt-lg-2"  method="post">
+                          {% csrf_token %}
+                           <div class="form-group contact-forms">
+                              <textarea class="form-control" name="content" rows="3" placeholder="Write Your Comment...!"></textarea>
+                           </div>
+							{% if request.user.is_authenticated %}
+                           <button type="submit" class="btn btn-success">Submit</button>
+							{% else %}
+							<button type="submit" class="btn btn-success" disabled>Submit</button>Login To Comment
+							{% endif %}
+						</form>
+						
+                        <!--//comments-form-->
+                     </div>
+                  </div>
+	
+	
 <!-- stats -->
 	<div class="stats">
 	<div class="overlay py-5">
@@ -48,6 +105,7 @@
    </div>
    </div>   
 </div>
+
 <!-- //stats -->
 
 	

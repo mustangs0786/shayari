@@ -26,7 +26,7 @@ pytz==2018.4
 requests==2.21.0
 six==1.11.0
 text-unidecode==1.2
-urllib3==1.24.1
+urllib3==1.26.5
 utils==0.9.0
 utils2==0.1.2
 virtualenv==16.0.0

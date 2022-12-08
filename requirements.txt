@@ -1,5 +1,5 @@
 ﻿antiorm==1.2.1
-certifi==2018.4.16
+certifi==2022.12.7
 cgi-tools==0.0.2
 chardet==3.0.4
 db==0.1.1
